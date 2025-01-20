@@ -1,11 +1,11 @@
 import unittest
 from gilded_rose import GildedRose, Item
 
-#stole these from the internet just to check my work
+
+# stole these from the internet just to check my work
 class GildedRoseTest(unittest.TestCase):
 
-
-    def updater(obj = GildedRose, times = 1):
+    def updater(obj=GildedRose, times=1):
         for i in range(times):
             obj.update_quality()
 
@@ -18,7 +18,7 @@ class GildedRoseTest(unittest.TestCase):
         gilded_rose.update_quality()
         self.assertEqual(item.sell_in, 9)
         self.assertEqual(item.quality, 19)
-        
+
         # Sell by date passed
         GildedRoseTest.updater(gilded_rose, item.sell_in + 1)
         self.assertEqual(item.sell_in, -1)
@@ -33,7 +33,7 @@ class GildedRoseTest(unittest.TestCase):
         # Set up the item
         item = Item("Aged Brie", 10, 20)
         gilded_rose = GildedRose([item])
-        
+
         # One day after
         gilded_rose.update_quality()
         self.assertEqual(item.sell_in, 9)
@@ -47,7 +47,7 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(item.quality, 32)
         GildedRoseTest.updater(gilded_rose, 10)
         self.assertEqual(item.sell_in, -11)
-        self.assertEqual(item.quality, 50) 
+        self.assertEqual(item.quality, 50)
 
     def test_sulfuras(self):
         # Set up the item
@@ -59,13 +59,13 @@ class GildedRoseTest(unittest.TestCase):
         self.assertNotEqual(item.sell_in, 19)
         self.assertEqual(item.sell_in, 20)
         self.assertEqual(item.quality, 80)
-        
+
         # sell by date passed
         GildedRoseTest.updater(gilded_rose, item.sell_in + 1)
         self.assertEqual(item.sell_in, 20)
         self.assertNotEqual(item.sell_in, -1)
 
-    #added this one to check my legendary list method
+    # added this one to check my legendary list method
     def test_new_legendary(self):
         # Set up the item
         item = Item("Thunderfury, Blessed Blade of the Windseeker", 20, 80)
@@ -76,12 +76,12 @@ class GildedRoseTest(unittest.TestCase):
         self.assertNotEqual(item.sell_in, 19)
         self.assertEqual(item.sell_in, 20)
         self.assertEqual(item.quality, 80)
-        
+
         # sell by date passed
         GildedRoseTest.updater(gilded_rose, item.sell_in + 1)
         self.assertEqual(item.sell_in, 20)
         self.assertNotEqual(item.sell_in, -1)
-        
+
     def test_backstage_passes(self):
         # Set up the item
         item = Item("Backstage passes to a TAFKAL80ETC concert", 20, 20)
@@ -143,5 +143,6 @@ class GildedRoseTest(unittest.TestCase):
         self.assertEqual(item.sell_in, -3)
         self.assertEqual(item.quality, 0)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
